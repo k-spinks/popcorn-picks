@@ -42,7 +42,8 @@ export default function Navbar() {
   }, [isOpen]);
 
   return (
-    <nav className="flex flex-wrap md:flex-nowrap justify-between items-center z-50 backdrop-blur-md top-0 left-0 w-full lg:px-14 md:px-8 px-4 py-3 text-white fixed text-lg">
+    <nav className="flex flex-wrap md:flex-nowrap justify-between items-center z-50 backdrop-blur-md top-0 left-0 w-full lg:px-14 md:px-8 px-4 py-3 text-white fixed text-lg border-b-2 border-red-500">
+
       {/* Logo */}
       <div className="w-auto flex justify-center md:justify-start items-center shrink-0 gap-4 lg:gap-8">
         <Logo />
@@ -50,7 +51,7 @@ export default function Navbar() {
       </div>
 
       {/* Larger Nav */}
-      <div className="lg:flex justify-center items-center gap-6 hidden">
+      <div className="lg:flex justify-center items-center gap-12 hidden">
         <ul className="flex justify-between items-center gap-8">
           <li>
             <div className="hover:text-red-500 flex justify-between items-center"onMouseEnter={() => setIsDropDownOpen((prev) => !prev)}
@@ -70,19 +71,19 @@ export default function Navbar() {
             </div>
             <ul>
             <ul
-              className={`${isDropDownOpen ? 'absolute' : 'hidden'} top-12 right-90 bg-gray-800 flex flex-col justify-between items-start gap-4 py-4 px-5 rounded-sm`}
+              className={`${isDropDownOpen ? 'absolute' : 'hidden'} top-12 right-75 bg-gray-800 flex flex-col justify-between items-start gap-4 py-4 px-5 rounded-sm`}
               onMouseEnter={() => setIsDropDownOpen((prev) => !prev)}
                 onMouseLeave={() => setIsDropDownOpen((prev) => !prev)}
             >
-              <li className="flex justify-between items-center gap-2 hover:text-red-500">
+              <li className="flex justify-between items-center gap-4 hover:text-red-500">
                 <TrendingUp size={24} color="white" />
                 <Link href={"/toprated"}>Top Rated</Link>
               </li>
-              <li className="flex justify-between items-center gap-2 hover:text-red-500">
+              <li className="flex justify-between items-center gap-4 hover:text-red-500">
                 <Smile size={24} color="white" />
                 <Link href={"/popular"}>Popular</Link>
               </li>
-              <li className="flex justify-between items-center gap-2 hover:text-red-500">
+              <li className="flex justify-between items-center gap-4 hover:text-red-500">
                 <Bell size={24} color="white" />
                 <Link href={"/upcoming"}>Upcoming</Link>
               </li>
@@ -101,9 +102,6 @@ export default function Navbar() {
             <Link href={"/profile"}>
               <Image src={"/pfp.png"} alt="pfp" width={45} height={45} />
             </Link>
-          </li>
-          <li className="hover:text-red-500">
-            <Link href={"/settings"}>Settings</Link>
           </li>
         </ul>
       </div>

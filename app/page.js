@@ -1,7 +1,11 @@
-export default function Home() {
+import Hero from "@/components/Hero";
+import { getSingleMovie } from "./api/route";
+
+export default async function Home() {
+  const movie = await getSingleMovie()
   return (
-    <div>
-      <h1>Hello From homepage</h1>
+    <div className="text-white">
+      <Hero movies={movie}/>
     </div>
   );
 }

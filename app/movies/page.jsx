@@ -1,7 +1,8 @@
+
 export default function Page() {
   return (
-    <div className="text-white mt-15">
-      <h1>This is the movie page</h1>
+    <div className="text-white mt-75 ml-125">
+      
     </div>
   )
 }

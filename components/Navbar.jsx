@@ -120,7 +120,7 @@ export default function Navbar() {
       <div
         className={`${
           isOpen ? "absolute" : "hidden"
-        } w-screen h-screen bg-black opacity-60`}
+        } w-screen h-screen bg-black opacity-70 top-0 right-0`}
       ></div>
 
       {/* Mobile Nav */}

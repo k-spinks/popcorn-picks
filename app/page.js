@@ -1,11 +1,11 @@
-import Hero from "@/components/Hero";
-import { getSingleMovie } from "./api/route";
+import { getMultipleMovies } from "./api/route";
+import HeroWrapper from "@/components/HeroWrapper";
 
 export default async function Home() {
-  const movie = await getSingleMovie()
+  const movies = await getMultipleMovies()
   return (
     <div className="text-white">
-      <Hero movies={movie}/>
+      <HeroWrapper movies={movies.slice(0,10)} />
     </div>
   );
 }

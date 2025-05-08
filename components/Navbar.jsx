@@ -25,8 +25,8 @@ export default function Navbar() {
   useEffect(() => {
     function handleClickOutside(event) {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setIsOpen(false); // ✅ this was incorrect in your version
-        setIsDropDownOpen(false); // optional: close dropdown as well
+        setIsOpen(false);
+        setIsDropDownOpen(false);
       }
     }
 
@@ -42,7 +42,7 @@ export default function Navbar() {
   }, [isOpen]);
 
   return (
-    <nav className="flex flex-wrap md:flex-nowrap justify-between items-center z-50 backdrop-blur-md top-0 left-0 w-full lg:px-14 md:px-8 px-4 py-3 text-white fixed text-lg border-b-2 border-red-500">
+    <nav className="flex flex-wrap md:flex-nowrap justify-between items-center z-50 backdrop-blur-md w-full max-w-8xl px-2 md:px-12 mx-auto py-4 text-white fixed text-lg border-b-2 border-red-500">
 
       {/* Logo */}
       <div className="w-auto flex justify-center md:justify-start items-center shrink-0 gap-4 lg:gap-8">

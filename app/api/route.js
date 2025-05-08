@@ -41,20 +41,40 @@ export async function getMultipleMovies() {
   };
 
   try {
-    const res = await fetch(url, options)
+    const res = await fetch(url, options);
 
     if (!res.ok) {
       throw new Error(`TMDB error: ${res.status}`);
     }
 
-    const data = await res.json()
-    const movies = data.results
-    return movies
-
-
-  }catch(e) {
-    console.log(e)
+    const data = await res.json();
+    const movies = data.results;
+    return movies;
+  } catch (e) {
+    console.log(e);
   }
 }
 
+export async function getTrailer(movieId) {
+  const url = `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`;
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: `Bearer ${API_KEY}`
+  }
+};
 
+  try {
+    const res = await fetch(url, options);
+
+    if (!res.ok) {
+      throw new Error(`TMDB error: ${res.status}`);
+    }
+
+    const data = await res.json();
+    return data
+  } catch (e) {
+    console.log(e);
+  }
+}

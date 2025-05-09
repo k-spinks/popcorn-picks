@@ -34,13 +34,18 @@ export default function Hero({ movie, toggleModal }) {
 
         <h1 className="text-2xl lg:text-7xl font-bold">{title}</h1>
         <p className="text-md md:text-lg lg:w-[60%] line-clamp-3">{overview}</p>
-        <div className="flex justify-between items-center gap-6">
+        <div className="flex justify-between items-center gap-4">
           <p>⭐{vote_average}</p>
           <Button
             className={`${buttonVariants({ variant: "outline" })} cursor-pointer`}
             onClick={toggleModal}
           >
             Watch Trailer
+          </Button>
+          <Button
+            className={`${buttonVariants({ variant: "secondary" })} cursor-pointer`}
+          >
+            Details
           </Button>
         </div>
       </div>

@@ -1,11 +1,16 @@
+
+import { getHeroMovies } from "./api/movies/route";
 import { getMultipleMovies } from "./api/route";
 import HeroWrapper from "@/components/HeroWrapper";
 
 export default async function Home() {
-  const movies = await getMultipleMovies()
+  // Fetch the movies with dominant color data
+  const movies = await getHeroMovies()
+
   return (
     <div className="text-white">
-      <HeroWrapper movies={movies.slice(0,10)} />
+      {/* Pass the first 10 movies to HeroWrapper */}
+      <HeroWrapper movies={movies} />
     </div>
   );
 }

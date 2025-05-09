@@ -9,10 +9,11 @@ export default function Modal({ visible, toggleModal, movieId }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  console.log("Visibility:", visible)
+  console.log("Visibility:", visible);
 
   useEffect(() => {
     const fetchTrailer = async () => {
+      
       if (!visible) return;
 
       setIsLoading(true);
@@ -30,16 +31,21 @@ export default function Modal({ visible, toggleModal, movieId }) {
           return;
         }
 
-        // Filter out YouTube trailer
-        const trailer = data.results.find(
-          (vid) => vid.type === "Trailer" && vid.site === "YouTube"
+        let trailer = data.results.find(
+          (vid) =>
+            vid.type === "Trailer" &&
+            vid.site === "YouTube" &&
+            vid.official === true
         );
 
-        console.log("Filter youtube:", trailer)
+        if (!trailer) {
+          trailer = data.results.find(
+            (vid) => vid.type === "Trailer" && vid.site === "YouTube"
+          );
+        }
 
         if (trailer) {
-          setTrailerData(trailer); // Set the trailer data in state
-
+          setTrailerData(trailer);
         } else {
           setError("Trailer not found on YouTube");
           setTrailerData(null);
@@ -78,10 +84,13 @@ export default function Modal({ visible, toggleModal, movieId }) {
             exit={{ y: 50, opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            {isLoading && <div>Loading...</div>}
+            {isLoading && <div className="text-white">Loading...</div>}
             {!isLoading && !youTubeTrailer && <div>No trailer available</div>}
             {!isLoading && youTubeTrailer && (
-              <TrailerPlayer trailerKey={youTubeTrailer.key} title={youTubeTrailer.name}/>
+              <TrailerPlayer
+                trailerKey={youTubeTrailer.key}
+                title={youTubeTrailer.name}
+              />
             )}
             <button className="hover:cursor-pointer">
               <X
